@@ -1,0 +1,276 @@
+ROLE
+
+You are a senior React Native engineer, mobile UX designer, and product thinker building a real, production-ready mobile app for a startup called Bazaario.
+
+This is NOT a demo, prototype, or UI mock.
+This is a launch-ready mobile application frontend that can scale.
+
+🧠 PRODUCT CONTEXT (CRITICAL)
+
+Bazaario is a video-first local commerce platform that brings offline Indian markets (Sarojini Nagar, Lajpat Nagar, Kamla Nagar, etc.) online while preserving:
+
+live interaction
+
+trust
+
+bargaining
+
+human connection
+
+The app must feel:
+
+local
+
+human
+
+premium
+
+minimal
+
+Not cluttered like Amazon or Flipkart.
+
+🧱 TECH STACK (STRICT — DO NOT DEVIATE)
+
+Framework: React Native (Expo)
+
+Language: TypeScript
+
+Navigation: React Navigation
+
+Styling: NativeWind (Tailwind for RN)
+
+State: Zustand / Context API
+
+Icons: Lucide React Native
+
+Images: Optimized assets
+
+Theme: Light & Dark mode toggle
+
+🎨 DESIGN SYSTEM
+Colors (STRICT)
+
+White → primary background
+
+Black → text / dark mode base
+
+#F18288 → soft accent
+
+#DA0350 → primary CTA
+
+Visual Rules
+
+Minimalist UI
+
+Clean spacing
+
+Rounded cards
+
+Subtle shadows
+
+No loud gradients
+
+Calm, premium look
+
+Dark / Light Mode
+
+Global toggle
+
+Persist user preference
+
+Smooth transitions
+
+Proper contrast
+
+🧭 GLOBAL APP STRUCTURE
+Bottom Tab Navigation
+
+Home
+
+Explore Markets
+
+Video Call
+
+Cart
+
+Profile
+
+Top App Bar
+
+Bazaario logo
+
+Market search
+
+Notification icon
+
+🏠 SCREENS TO BUILD (FRONTEND)
+1️⃣ Onboarding Screens
+
+3-screen intro
+
+Explains:
+
+Local markets
+
+Video shopping
+
+Trust & interaction
+
+Minimal text + illustrations
+
+2️⃣ Authentication UI
+
+Mobile number / email input
+
+OTP input screen
+
+Customer vs Seller selection
+
+Loading & error states
+
+API-ready structure
+
+3️⃣ Home Screen
+
+Hero banner:
+“Shop from your offline stores — on live video call”
+
+Featured markets (carousel)
+
+Categories
+
+Featured stores
+
+Clean scroll flow
+
+4️⃣ Market & Store Browsing
+
+Market list (Sarojini, Lajpat, etc.)
+
+Store cards with:
+
+Image
+
+Availability badge
+
+“Video Call Now” button
+
+Smooth transitions
+
+5️⃣ Product & Store Screens
+
+Store profile
+
+Product grid
+
+Product detail screen
+
+Add to cart CTA
+
+6️⃣ Video Call UI (Frontend Only)
+
+Incoming call screen
+
+Call request modal
+
+In-call UI:
+
+Camera toggle
+
+Mic toggle
+
+End call
+
+Placeholder hooks for SDK (Agora/WebRTC)
+
+7️⃣ Cart & Checkout
+
+Cart screen
+
+Address form
+
+Order summary
+
+Payment CTA (UI only)
+
+Order confirmation screen
+
+8️⃣ Profile & Orders
+
+Profile details
+
+Saved addresses
+
+Order history
+
+Logout
+
+Theme toggle
+
+🧩 COMPONENT REQUIREMENTS
+
+Reusable components:
+
+Buttons (primary/secondary)
+
+Cards
+
+Modals
+
+Toggles
+
+Inputs
+
+Loaders
+
+Empty states
+
+All components must:
+
+Be typed
+
+Support dark mode
+
+Follow design system
+
+📱 RESPONSIVENESS & UX
+
+Mobile-first (only)
+
+Smooth animations
+
+Touch-friendly spacing
+
+No janky layouts
+
+🧑‍💻 CODE QUALITY STANDARDS
+
+Clean folder structure
+
+Typed props
+
+Separation of UI & logic
+
+API-ready services
+
+No hardcoded business logic
+
+Readable, scalable code
+
+🚀 FINAL OUTPUT EXPECTATION
+
+Generate:
+
+Full React Native (Expo) project
+
+All screens wired with navigation
+
+Light/Dark mode working
+
+Clean, minimalist UI
+
+Matches Bazaario branding & screenshots
+
+Ready to plug into backend APIs
+
+This app should feel investor-ready, launch-ready, and real.
