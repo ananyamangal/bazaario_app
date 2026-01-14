@@ -17,6 +17,7 @@ export default function Login() {
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
+      sessionStorage.setItem("bazaario_authed", "1");
       setLocation("/");
     }, 1500);
   };

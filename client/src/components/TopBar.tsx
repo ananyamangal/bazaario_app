@@ -5,7 +5,11 @@ export function TopBar() {
   const [location] = useLocation();
   
   // Hide on onboarding, login, or screens that have their own headers like video call
-  if (["/onboarding", "/login", "/video-call"].includes(location)) return null;
+  if (
+    ["/onboarding", "/login", "/auth", "/video-call"].includes(location) ||
+    location.startsWith("/register")
+  )
+    return null;
 
   return (
     <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-md border-b border-border/40">

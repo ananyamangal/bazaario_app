@@ -13,7 +13,13 @@ export function BottomNav() {
     { icon: User, label: "Profile", href: "/profile" },
   ];
 
-  if (location === "/login" || location === "/onboarding") return null;
+  if (
+    location === "/login" ||
+    location === "/onboarding" ||
+    location === "/auth" ||
+    location.startsWith("/register")
+  )
+    return null;
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t border-border pb-safe-area shadow-[0_-5px_15px_-5px_rgba(0,0,0,0.05)]">
