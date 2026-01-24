@@ -4,3 +4,6 @@ dist
 server/public
 vite.config.ts.*
 *.tar.gz
+.env
+server/bazaario-74850-firebase-adminsdk-fbsvc-e9dc8e0ad2.json
+server/.env
