@@ -7,3 +7,5 @@ vite.config.ts.*
 .env
 server/bazaario-74850-firebase-adminsdk-fbsvc-e9dc8e0ad2.json
 server/.env
+# Ignore any local Firebase service account files
+server/*.json
