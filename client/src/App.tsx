@@ -21,6 +21,7 @@ import Auth from "@/pages/Auth";
 import Register from "@/pages/Register";
 import RegisterCustomer from "@/pages/RegisterCustomer";
 import RegisterSeller from "@/pages/RegisterSeller";
+import VerifyOtp from "@/pages/VerifyOtp";
 import NotFound from "@/pages/not-found";
 import splashImage from "@images/Screenshot 2026-01-14 at 4.18.41 PM.png";
 
@@ -50,6 +51,7 @@ function Router() {
     return (path: string) =>
       path === "/auth" ||
       path === "/login" ||
+      path === "/verify-otp" ||
       path === "/onboarding" ||
       path.startsWith("/register");
   }, []);
@@ -89,6 +91,7 @@ function Router() {
           <Route path="/profile" component={Profile} />
           <Route path="/onboarding" component={Onboarding} />
           <Route path="/login" component={Login} />
+          <Route path="/verify-otp" component={VerifyOtp} />
           <Route path="/register" component={Register} />
           <Route path="/register/customer" component={RegisterCustomer} />
           <Route path="/register/seller" component={RegisterSeller} />

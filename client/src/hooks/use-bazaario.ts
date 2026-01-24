@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { api, buildUrl } from "@shared/routes";
+import { mockMarkets, getMarketById, getStoresByMarket, mockCategories, getProducts } from "@/lib/mockData";
 
 // ============================================
 // Markets
@@ -8,9 +9,14 @@ export function useMarkets() {
   return useQuery({
     queryKey: [api.markets.list.path],
     queryFn: async () => {
-      const res = await fetch(api.markets.list.path, { credentials: "include" });
-      if (!res.ok) throw new Error("Failed to fetch markets");
-      return api.markets.list.responses[200].parse(await res.json());
+      try {
+        const res = await fetch(api.markets.list.path, { credentials: "include" });
+        if (!res.ok) throw new Error("Failed to fetch markets");
+        return api.markets.list.responses[200].parse(await res.json());
+      } catch (err) {
+        // fallback to mock data
+        return mockMarkets;
+      }
     },
   });
 }
@@ -19,11 +25,15 @@ export function useMarket(id: number) {
   return useQuery({
     queryKey: [api.markets.get.path, id],
     queryFn: async () => {
-      const url = buildUrl(api.markets.get.path, { id });
-      const res = await fetch(url, { credentials: "include" });
-      if (res.status === 404) return null;
-      if (!res.ok) throw new Error("Failed to fetch market");
-      return api.markets.get.responses[200].parse(await res.json());
+      try {
+        const url = buildUrl(api.markets.get.path, { id });
+        const res = await fetch(url, { credentials: "include" });
+        if (res.status === 404) return null;
+        if (!res.ok) throw new Error("Failed to fetch market");
+        return api.markets.get.responses[200].parse(await res.json());
+      } catch (err) {
+        return getMarketById(String(id));
+      }
     },
     enabled: !!id,
   });
@@ -36,12 +46,16 @@ export function useStores(marketId?: string) {
   return useQuery({
     queryKey: [api.stores.list.path, marketId],
     queryFn: async () => {
-      const url = marketId 
-        ? `${api.stores.list.path}?marketId=${marketId}`
-        : api.stores.list.path;
-      const res = await fetch(url, { credentials: "include" });
-      if (!res.ok) throw new Error("Failed to fetch stores");
-      return api.stores.list.responses[200].parse(await res.json());
+      try {
+        const url = marketId 
+          ? `${api.stores.list.path}?marketId=${marketId}`
+          : api.stores.list.path;
+        const res = await fetch(url, { credentials: "include" });
+        if (!res.ok) throw new Error("Failed to fetch stores");
+        return api.stores.list.responses[200].parse(await res.json());
+      } catch (err) {
+        return getStoresByMarket(marketId);
+      }
     },
   });
 }
@@ -67,9 +81,13 @@ export function useCategories() {
   return useQuery({
     queryKey: [api.categories.list.path],
     queryFn: async () => {
-      const res = await fetch(api.categories.list.path, { credentials: "include" });
-      if (!res.ok) throw new Error("Failed to fetch categories");
-      return api.categories.list.responses[200].parse(await res.json());
+      try {
+        const res = await fetch(api.categories.list.path, { credentials: "include" });
+        if (!res.ok) throw new Error("Failed to fetch categories");
+        return api.categories.list.responses[200].parse(await res.json());
+      } catch (err) {
+        return mockCategories;
+      }
     },
   });
 }
@@ -81,18 +99,22 @@ export function useProducts(params?: { storeId?: string; categoryId?: string; se
   return useQuery({
     queryKey: [api.products.list.path, params],
     queryFn: async () => {
-      let url = api.products.list.path;
-      if (params) {
-        const queryParams = new URLSearchParams();
-        if (params.storeId) queryParams.append("storeId", params.storeId);
-        if (params.categoryId) queryParams.append("categoryId", params.categoryId);
-        if (params.search) queryParams.append("search", params.search);
-        url += `?${queryParams.toString()}`;
+      try {
+        let url = api.products.list.path;
+        if (params) {
+          const queryParams = new URLSearchParams();
+          if (params.storeId) queryParams.append("storeId", params.storeId);
+          if (params.categoryId) queryParams.append("categoryId", params.categoryId);
+          if (params.search) queryParams.append("search", params.search);
+          url += `?${queryParams.toString()}`;
+        }
+        
+        const res = await fetch(url, { credentials: "include" });
+        if (!res.ok) throw new Error("Failed to fetch products");
+        return api.products.list.responses[200].parse(await res.json());
+      } catch (err) {
+        return getProducts({ storeId: params?.storeId, category: params?.categoryId });
       }
-      
-      const res = await fetch(url, { credentials: "include" });
-      if (!res.ok) throw new Error("Failed to fetch products");
-      return api.products.list.responses[200].parse(await res.json());
     },
   });
 }

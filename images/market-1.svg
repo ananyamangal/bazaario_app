@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <defs>
+    <lineargradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#f97316"/>
+      <stop offset="1" stop-color="#fb7185"/>
+    </lineargradient>
+  </defs>
+  <rect width="1200" height="600" fill="url(#g)"/>
+  <g fill="#fff" font-family="sans-serif">
+    <text x="60" y="120" font-size="48" font-weight="700">Sarojini Nagar</text>
+    <text x="60" y="180" font-size="22">A bustling market of textiles and crafts.</text>
+  </g>
+</svg>

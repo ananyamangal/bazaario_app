@@ -1,5 +1,6 @@
 import { Bell, Search } from "lucide-react";
 import { Link, useLocation } from "wouter";
+import logoImg from "@images/Screenshot 2026-01-14 at 6.51.34 PM.png";
 
 export function TopBar() {
   const [location] = useLocation();
@@ -15,9 +16,12 @@ export function TopBar() {
     <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-md border-b border-border/40">
       <div className="flex items-center justify-between px-4 h-14 max-w-lg mx-auto">
         <Link href="/" className="flex items-center gap-2 cursor-pointer">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold font-display text-lg shadow-sm">
-            B
-          </div>
+          <img
+            src={logoImg}
+            alt="Bazaario"
+            className="w-8 h-8 rounded-lg object-contain"
+            draggable={false}
+          />
           <span className="font-display font-bold text-xl tracking-tight text-primary">
             Bazaario
           </span>

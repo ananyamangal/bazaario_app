@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { User, Settings, Package, Heart, LogOut, ChevronRight, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
@@ -8,6 +9,34 @@ export default function Profile() {
 
   const handleLogout = () => {
     setLocation("/login");
+  };
+
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("bazaario_theme");
+      const initial = saved ? saved === "dark" : document.documentElement.classList.contains("dark");
+      setIsDark(initial);
+    } catch (e) {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    }
+  }, []);
+
+  const toggleTheme = (val?: boolean) => {
+    const next = typeof val === "boolean" ? val : !isDark;
+    setIsDark(next);
+    try {
+      if (next) {
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("bazaario_theme", "dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("bazaario_theme", "light");
+      }
+    } catch (e) {
+      // ignore
+    }
   };
 
   const menuItems = [
@@ -48,14 +77,14 @@ export default function Profile() {
         ))}
       </div>
       
-      <div className="bg-card rounded-3xl p-4 shadow-sm border border-border/50 mb-8 flex items-center justify-between">
+         <div className="bg-card rounded-3xl p-4 shadow-sm border border-border/50 mb-8 flex items-center justify-between">
          <div className="flex items-center gap-4">
            <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
              <Moon className="w-5 h-5" />
            </div>
            <span className="font-medium">Dark Mode</span>
          </div>
-         <Switch />
+         <Switch checked={isDark} onCheckedChange={toggleTheme} />
       </div>
 
       <Button 

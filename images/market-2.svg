@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <rect width="1200" height="600" fill="#06b6d4"/>
+  <g fill="#fff" font-family="sans-serif">
+    <text x="60" y="120" font-size="48" font-weight="700">Dilli Haat</text>
+    <text x="60" y="180" font-size="22">Curated crafts and food stalls.</text>
+  </g>
+</svg>

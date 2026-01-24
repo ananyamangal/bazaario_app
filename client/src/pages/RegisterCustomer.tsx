@@ -14,8 +14,8 @@ export default function RegisterCustomer() {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      sessionStorage.setItem("bazaario_authed", "1");
-      setLocation("/");
+      // After registering, send OTP and go to verification
+      setLocation("/verify-otp");
     }, 900);
   };
 

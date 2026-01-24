@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Loader2 } from "lucide-react";
+import logoImg from "@images/Screenshot 2026-01-14 at 6.51.34 PM.png";
 
 export default function Login() {
   const [, setLocation] = useLocation();
@@ -14,21 +15,23 @@ export default function Login() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate API call
+    // Simulate sending OTP
     setTimeout(() => {
       setIsLoading(false);
-      sessionStorage.setItem("bazaario_authed", "1");
-      setLocation("/");
-    }, 1500);
+      setLocation("/verify-otp");
+    }, 800);
   };
 
   return (
     <div className="min-h-screen bg-background flex flex-col justify-center p-6">
       <div className="max-w-sm mx-auto w-full space-y-8">
         <div className="text-center space-y-2">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary text-primary-foreground text-3xl font-display font-bold shadow-lg shadow-primary/25 mb-4">
-            B
-          </div>
+          <img
+            src={logoImg}
+            alt="Bazaario"
+            className="inline-flex items-center justify-center w-16 h-16 rounded-2xl object-contain mb-4 mx-auto"
+            draggable={false}
+          />
           <h1 className="text-3xl font-display font-bold tracking-tight">Welcome Back</h1>
           <p className="text-muted-foreground">Sign in to continue to Bazaario</p>
         </div>
